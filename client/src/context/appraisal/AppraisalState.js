@@ -72,6 +72,10 @@ const AppraisalState = props => {
   const [state, dispatch] = useReducer(appraisalReducer, initialState);
 
   // Add appraisal
+  const addAppraisal = appraisal => {
+    appraisal.id = uuid.v4();
+    dispatch({ type: ADD_APPRAISAL, payload: appraisal });
+  };
 
   // Delete appraisal
 
@@ -88,7 +92,8 @@ const AppraisalState = props => {
   return (
     <AppraisalContext.Provider
       value={{
-        appraisals: state.appraisals
+        appraisals: state.appraisals,
+        addAppraisal
       }}
     >
       {props.children}

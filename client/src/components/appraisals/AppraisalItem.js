@@ -35,18 +35,14 @@ const AppraisalItem = ({ appraisal }) => {
         </span>
       </h3>
       <ul className="list">
-        {email && (
+        {evalperiod && (
           <li>
-            <i className="fas fa-envelope-open"></i> {email}
+            <i className="fas fa-calendar"></i> {evalperiod}
           </li>
         )}
-        {position && (
+        {email && (
           <li>
-            <i
-              style={{ fontSize: "24px" }}
-              className="fas fa-angle-double-up"
-            ></i>{" "}
-            {position}
+            <i style={{ fontSize: "15px" }} className="fas fa-envelope-open"></i> {email}
           </li>
         )}
       </ul>
