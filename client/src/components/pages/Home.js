@@ -1,9 +1,15 @@
 import React from "react";
+import Appraisals from "../appraisals/Appraisals";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="grid-2">
+      <div>
+      {/* Appraisal From */}
+      </div>
+      <div>
+        <Appraisals />
+      </div>
     </div>
   );
 };
