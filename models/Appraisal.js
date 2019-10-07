@@ -52,7 +52,7 @@ const AppraisalSchema = mongoose.Schema({
   },
   type: {
     type: String,
-    default: "personal"
+    default: "draft"
   },
   date: {
     type: Date,

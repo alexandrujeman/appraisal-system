@@ -21,7 +21,7 @@ const AppraisalState = props => {
         email: "loremipsum@gmail.com",
         phone: "111-111-1111",
         evalperiod: "Mid year 2019",
-        position: "Magni Dolores",
+        position: "Team Leader",
         team: "Natus error",
         teamleader: "Cicero",
         achieved: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam",
@@ -30,7 +30,7 @@ const AppraisalState = props => {
         swot: "S: W: O: T:",
         feedback: "Ipsum quia dolor sit amet",
         tlfeedback: "Ipsum quia dolor sit amet",
-        type: "personal"
+        type: "submitted"
       },
       {
         id: 2,
@@ -38,7 +38,7 @@ const AppraisalState = props => {
         email: "ipsumdolor@gmail.com",
         phone: "222-111-1111",
         evalperiod: "Mid year 2019",
-        position: "Magni Dolores",
+        position: "Team Member",
         team: "Natus error",
         teamleader: "Cicero",
         achieved: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam",
@@ -47,7 +47,7 @@ const AppraisalState = props => {
         swot: "S: W: O: T:",
         feedback: "Ipsum quia dolor sit amet",
         tlfeedback: "Ipsum quia dolor sit amet",
-        type: "personal"
+        type: "draft"
       },
       {
         id: 3,
@@ -55,7 +55,7 @@ const AppraisalState = props => {
         email: "sitamet@gmail.com",
         phone: "333-111-1111",
         evalperiod: "Mid year 2019",
-        position: "Magni Dolores",
+        position: "New Member",
         team: "Natus error",
         teamleader: "Cicero",
         achieved: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam",
@@ -64,7 +64,7 @@ const AppraisalState = props => {
         swot: "S: W: O: T:",
         feedback: "Ipsum quia dolor sit amet",
         tlfeedback: "Ipsum quia dolor sit amet",
-        type: "personal"
+        type: "draft"
       }
     ]
   };

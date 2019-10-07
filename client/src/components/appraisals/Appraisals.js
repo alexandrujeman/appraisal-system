@@ -1,5 +1,6 @@
 import React, { Fragment, useContext } from "react";
-import AppraisalContext from "../../context/appraisal/appraisalContext";;
+import AppraisalItem from "./AppraisalItem";
+import AppraisalContext from "../../context/appraisal/appraisalContext";
 
 const Appraisals = () => {
   const appraisalContext = useContext(AppraisalContext);
@@ -9,7 +10,7 @@ const Appraisals = () => {
   return (
     <Fragment>
       {appraisals.map(appraisal => (
-        <h3>{appraisal.name}</h3>
+        <AppraisalItem key={appraisal.id} appraisal={appraisal} />
       ))}
     </Fragment>
   );

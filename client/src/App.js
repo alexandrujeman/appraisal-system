@@ -10,17 +10,17 @@ import "./App.css";
 function App() {
   return (
     <AppraisalState>
-    <Router>
-      <Fragment>
-        <Navbar />
-        <div className="container">
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-          </Switch>
-        </div>
-      </Fragment>
-    </Router>
+      <Router>
+        <Fragment>
+          <Navbar />
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+            </Switch>
+          </div>
+        </Fragment>
+      </Router>
     </AppraisalState>
   );
 }
