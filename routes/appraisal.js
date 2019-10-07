@@ -149,8 +149,27 @@ router.put("/:id", auth, async (req, res) => {
 // route  DELETE api/appraisal/:id
 // desc   Update appraisal
 // access Private
-router.delete("/:id", (req, res) => {
-  res.send("delete appraisal");
+router.delete("/:id", auth, async (req, res) => {
+  try {
+    let appraisal = await Appraisal.findById(req.params.id);
+
+    if (!appraisal) {
+      return res.status(404).json({ msg: "Appraisal not found" });
+    }
+    // Make sure user owns appraisal
+    if (appraisal.user.toString() !== req.user.id) {
+      return res
+        .status(401)
+        .json({ msg: "You are not authorized to edit this form" });
+    }
+
+    await Appraisal.findByIdAndRemove(req.params.id);
+
+    res.json({ msg: "Appraisal removed" });
+  } catch (error) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
 });
 
 module.exports = router;
