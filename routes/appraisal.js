@@ -86,8 +86,64 @@ router.post(
 // route  PUT api/appraisal/:id
 // desc   Update appraisal
 // access Private
-router.put("/:id", (req, res) => {
-  res.send("Update appraisal");
+router.put("/:id", auth, async (req, res) => {
+  const {
+    name,
+    email,
+    phone,
+    evalperiod,
+    position,
+    team,
+    teamleader,
+    achieved,
+    goals,
+    wishlist,
+    swot,
+    feedback,
+    tlfeedback,
+    type
+  } = req.body;
+  // Build appraisal objects
+  const appraisalFields = {};
+  if (name) appraisalFields.name = name;
+  if (email) appraisalFields.email = email;
+  if (phone) appraisalFields.phone = phone;
+  if (evalperiod) appraisalFields.evalperiod = evalperiod;
+  if (position) appraisalFields.position = position;
+  if (team) appraisalFields.team = team;
+  if (teamleader) appraisalFields.teamleader = teamleader;
+  if (achieved) appraisalFields.achieved = achieved;
+  if (goals) appraisalFields.goals = goals;
+  if (wishlist) appraisalFields.wishlist = wishlist;
+  if (swot) appraisalFields.swot = swot;
+  if (feedback) appraisalFields.feedback = feedback;
+  if (tlfeedback) appraisalFields.tlfeedback = tlfeedback;
+  if (type) appraisalFields.type = type;
+
+  try {
+    let appraisal = await Appraisal.findById(req.params.id);
+
+    if (!appraisal) {
+      return res.status(404).json({ msg: "Appraisal not found" });
+    }
+    // Make sure user owns appraisal
+    if (appraisal.user.toString() !== req.user.id) {
+      return res
+        .status(401)
+        .json({ msg: "You are not authorized to edit this form" });
+    }
+
+    appraisal = await Appraisal.findByIdAndUpdate(
+      req.params.id,
+      { $set: appraisalFields },
+      { new: true }
+    );
+
+    res.json(appraisal);
+  } catch (error) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
 });
 
 // route  DELETE api/appraisal/:id
