@@ -1,13 +1,13 @@
 import React from "react";
+import logo from "../../logo-katoen-natie-white.svg";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ title, icon }) => {
+const Navbar = ({ title }) => {
   return (
     <div className="navbar bg-primary">
-      <h1>
-        <i className={icon} /> {title}
-      </h1>
+      <img src={logo} className="App-logo" alt="logo" />
+      <h2>{title}</h2>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -26,8 +26,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  title: "Appraisal System",
-  icon: "fas fa-id-card-alt"
+  title: "Appraisal System"
 };
 
 export default Navbar;
