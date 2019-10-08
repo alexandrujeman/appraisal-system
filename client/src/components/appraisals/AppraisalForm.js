@@ -93,7 +93,7 @@ const AppraisalForm = () => {
       {/* Evaluation Period */}
       <input
         type="text"
-        placeholder="Evaluation Period"
+        placeholder=""
         name="evalperiod"
         value={evalperiod}
         onChange={onChange}
@@ -102,7 +102,7 @@ const AppraisalForm = () => {
       {/* Position */}
       <input
         type="text"
-        placeholder="Position"
+        placeholder=""
         name="position"
         value={position}
         onChange={onChange}
@@ -111,7 +111,7 @@ const AppraisalForm = () => {
       {/* Team */}
       <input
         type="text"
-        placeholder="Team"
+        placeholder=""
         name="team"
         value={team}
         onChange={onChange}
@@ -120,42 +120,38 @@ const AppraisalForm = () => {
       {/* Teamleader */}
       <input
         type="text"
-        placeholder="Teamleader"
+        placeholder=""
         name="teamleader"
         value={teamleader}
         onChange={onChange}
       />
       <h4>Objectives/tasks achieved</h4>
       {/* Achieved */}
-      <input
-        type="text"
-        placeholder="Objectives/tasks achieved"
+      <textarea
+        placeholder=""
         name="achieved"
         value={achieved}
         onChange={onChange}
       />
       <h4>Objectives/tasks still to be accomplished</h4>
       {/* Goals */}
-      <input
-        type="text"
-        placeholder="Objectives/tasks still to be accomplished"
+      <textarea
+        placeholder=""
         name="goals"
         value={goals}
         onChange={onChange}
       />
       <h4>Wish-list of Trainings/ Activities to accomplish</h4>
       {/* Wishlist */}
-      <input
-        type="text"
-        placeholder="Wish-list of Trainings/ Activities to accomplish"
+      <textarea
+        placeholder=""
         name="wishlist"
         value={wishlist}
         onChange={onChange}
       />
       <h4>Individual SWOT analysis</h4>
       {/* Swot */}
-      <input
-        type="text"
+      <textarea
         placeholder="SWOT(strengths, weaknesses, opportunities, and threats)"
         name="swot"
         value={swot}
@@ -163,18 +159,16 @@ const AppraisalForm = () => {
       />
       <h4>Feedback and proposals</h4>
       {/* Feedback */}
-      <input
-        type="textarea"
-        placeholder="Feedback"
+      <textarea 
+        placeholder=""
         name="feedback"
         value={feedback}
         onChange={onChange}
       />
       <h4>Teamleader Feedback</h4>
       {/* Teamleader Feedback */}
-      <input
-        type="textarea"
-        placeholder="Teamleader Feedback"
+      <textarea
+        placeholder=""
         name="tlfeedback"
         value={tlfeedback}
         onChange={onChange}
