@@ -15,6 +15,13 @@ export default (state, action) => {
         ...state,
         appraisals: [...state.appraisals, action.payload]
       };
+    case UPDATE_APPRAISAL:
+      return {
+        ...state,
+        appraisals: state.appraisals.map(appraisal =>
+          appraisal.id === action.payload.id ? action.payload : appraisal
+        )
+      };
     case DELETE_APPRAISAL:
       return {
         ...state,

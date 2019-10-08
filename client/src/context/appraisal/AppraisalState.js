@@ -95,6 +95,9 @@ const AppraisalState = props => {
   };
   
   // Update appraisal
+  const updateAppraisal = appraisal => {
+    dispatch({ type: UPDATE_APPRAISAL, payload: appraisal });
+  };
 
   // Filter appraisals
 
@@ -108,7 +111,8 @@ const AppraisalState = props => {
         addAppraisal,
         deleteAppraisal,
         setCurrent,
-        clearCurrent
+        clearCurrent,
+        updateAppraisal
       }}
     >
       {props.children}

@@ -1,8 +1,38 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AppraisalContext from "../../context/appraisal/appraisalContext";
 
 const AppraisalForm = () => {
   const appraisalContext = useContext(AppraisalContext);
+
+  const {
+    addAppraisal,
+    updateAppraisal,
+    current,
+    clearCurrent
+  } = appraisalContext;
+
+  useEffect(() => {
+    if (current !== null) {
+      setAppraisal(current);
+    } else {
+      setAppraisal({
+        name: "",
+        email: "",
+        phone: "",
+        evalperiod: "",
+        position: "",
+        team: "",
+        teamleader: "",
+        achieved: "",
+        goals: "",
+        wishlist: "",
+        swot: "",
+        feedback: "",
+        tlfeedback: "",
+        type: "draft"
+      });
+    }
+  }, [appraisalContext, current]);
 
   const [appraisal, setAppraisal] = useState({
     name: "",
@@ -43,28 +73,42 @@ const AppraisalForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    appraisalContext.addAppraisal(appraisal);
-    setAppraisal({
-      name: "",
-      email: "",
-      phone: "",
-      evalperiod: "",
-      position: "",
-      team: "",
-      teamleader: "",
-      achieved: "",
-      goals: "",
-      wishlist: "",
-      swot: "",
-      feedback: "",
-      tlfeedback: "",
-      type: "draft"
-    });
+    if (current === null) {
+      addAppraisal(appraisal);
+    } else {
+      updateAppraisal(appraisal);
+    }
+    clearAll();
   };
+
+  const clearAll = () => {
+    clearCurrent();
+  };
+
+  // const onSubmit = e => {
+  //   e.preventDefault();
+  //   addAppraisal(appraisal);
+  //   setAppraisal({
+  //     name: "",
+  //     email: "",
+  //     phone: "",
+  //     evalperiod: "",
+  //     position: "",
+  //     team: "",
+  //     teamleader: "",
+  //     achieved: "",
+  //     goals: "",
+  //     wishlist: "",
+  //     swot: "",
+  //     feedback: "",
+  //     tlfeedback: "",
+  //     type: "draft"
+  //   });
+  // };
 
   return (
     <form onSubmit={onSubmit}>
-      <h2>Add Appraisal</h2>
+      <h2>{current ? "Edit Appraisal" : "Add Appraisal"}</h2>
       {/* Name */}
       <input
         type="text"
@@ -135,12 +179,7 @@ const AppraisalForm = () => {
       />
       <h4>Objectives/tasks still to be accomplished</h4>
       {/* Goals */}
-      <textarea
-        placeholder=""
-        name="goals"
-        value={goals}
-        onChange={onChange}
-      />
+      <textarea placeholder="" name="goals" value={goals} onChange={onChange} />
       <h4>Wish-list of Trainings/ Activities to accomplish</h4>
       {/* Wishlist */}
       <textarea
@@ -159,7 +198,7 @@ const AppraisalForm = () => {
       />
       <h4>Feedback and proposals</h4>
       {/* Feedback */}
-      <textarea 
+      <textarea
         placeholder=""
         name="feedback"
         value={feedback}
@@ -191,7 +230,14 @@ const AppraisalForm = () => {
         onChange={onChange}
       />{" "}
       Submitted{" "}
-      <input type="submit" value="Save" className="btn btn-primary btn-block" />
+      <input type="submit" value={current ? "Update" : "Save new"} className="btn btn-primary btn-block" />
+      {current && (
+        <div>
+          <button className="btn btn-light btn-block" onClick={clearAll}>
+            Clear
+          </button>
+        </div>
+      )}
     </form>
   );
 };
