@@ -372,6 +372,22 @@ table th {
   background: var(--light-color);
 }
 
+/* Animation (react-transition-group) */
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 400ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 400ms ease-in;
+}
+
 /* Navbar */
 .navbar {
   display: flex;
@@ -401,22 +417,6 @@ table th {
 
 .navbar .welcome span {
   margin-right: 0.6rem;
-}
-
-/* Animation (Add After) */
-.item-enter {
-  opacity: 0;
-}
-.item-enter-active {
-  opacity: 1;
-  transition: opacity 1000ms ease-in;
-}
-.item-exit {
-  opacity: 1;
-}
-.item-exit-active {
-  opacity: 0;
-  transition: opacity 1000ms ease-in;
 }
 
 /* Mobile Styles */

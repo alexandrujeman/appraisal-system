@@ -11,17 +11,7 @@ const AppraisalItem = ({ appraisal }) => {
     id,
     name,
     email,
-    phone,
     evalperiod,
-    position,
-    team,
-    teamleader,
-    achieved,
-    goals,
-    wishlist,
-    swot,
-    feedback,
-    tlfeedback,
     type
   } = appraisal;
 

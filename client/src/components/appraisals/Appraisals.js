@@ -1,4 +1,5 @@
 import React, { Fragment, useContext } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import AppraisalItem from "./AppraisalItem";
 import AppraisalContext from "../../context/appraisal/appraisalContext";
 
@@ -13,13 +14,19 @@ const Appraisals = () => {
 
   return (
     <Fragment>
-      {filtered !== null
-        ? filtered.map(appraisal => (
-            <AppraisalItem key={appraisal.id} appraisal={appraisal} />
-          ))
-        : appraisals.map(appraisal => (
-            <AppraisalItem key={appraisal.id} appraisal={appraisal} />
-          ))}
+      <TransitionGroup>
+        {filtered !== null
+          ? filtered.map(appraisal => (
+              <CSSTransition key={appraisal.id} timeout={500} classNames="item">
+                <AppraisalItem key={appraisal.id} appraisal={appraisal} />
+              </CSSTransition>
+            ))
+          : appraisals.map(appraisal => (
+              <CSSTransition key={appraisal.id} timeout={500} classNames="item">
+                <AppraisalItem appraisal={appraisal} />
+              </CSSTransition>
+            ))}
+      </TransitionGroup>
     </Fragment>
   );
 };
