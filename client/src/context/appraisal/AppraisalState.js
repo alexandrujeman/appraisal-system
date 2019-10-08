@@ -78,6 +78,9 @@ const AppraisalState = props => {
   };
 
   // Delete appraisal
+  const deleteAppraisal = id => {
+    dispatch({ type: DELETE_APPRAISAL, payload: id });
+  };
 
   // Set current appraisal
 
@@ -93,7 +96,8 @@ const AppraisalState = props => {
     <AppraisalContext.Provider
       value={{
         appraisals: state.appraisals,
-        addAppraisal
+        addAppraisal,
+        deleteAppraisal
       }}
     >
       {props.children}

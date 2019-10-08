@@ -11,9 +11,14 @@ import {
 export default (state, action) => {
   switch (action.type) {
     case ADD_APPRAISAL:
-      return{
+      return {
         ...state,
         appraisals: [...state.appraisals, action.payload]
+      };
+    case DELETE_APPRAISAL:
+      return {
+        ...state,
+        appraisals: state.appraisals.filter(appraisal => appraisal.id != action.payload)
       }
     default:
       return state;

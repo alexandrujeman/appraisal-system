@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import AppraisalContext from "../../context/appraisal/appraisalContext";
 
 const AppraisalItem = ({ appraisal }) => {
+
+  const appraisalContext = useContext(AppraisalContext);
+  const {deleteAppraisal} = appraisalContext;
+
   const {
     id,
     name,
@@ -19,6 +24,10 @@ const AppraisalItem = ({ appraisal }) => {
     tlfeedback,
     type
   } = appraisal;
+
+  const onDelete = () => {
+    deleteAppraisal(id);
+  } 
 
   return (
     <div className="card bg-light">
@@ -48,7 +57,7 @@ const AppraisalItem = ({ appraisal }) => {
       </ul>
       <p>
         <button className="btn btn-dark btn-sm">Edit</button>
-        <button className="btn btn-danger btn-sm">Delete</button>
+        <button className="btn btn-danger btn-sm" onClick={onDelete}>Delete</button>
       </p>
     </div>
   );
