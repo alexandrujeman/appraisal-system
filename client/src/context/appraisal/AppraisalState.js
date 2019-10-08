@@ -100,19 +100,28 @@ const AppraisalState = props => {
   };
 
   // Filter appraisals
+  const filterAppraisals = text => {
+    dispatch({ type: FILTER_APPRAISALS, payload: text });
+  };
 
   // Clear filter
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
+  };
 
   return (
     <AppraisalContext.Provider
       value={{
         appraisals: state.appraisals,
         current: state.current,
+        filtered: state.filtered,
         addAppraisal,
         deleteAppraisal,
         setCurrent,
         clearCurrent,
-        updateAppraisal
+        updateAppraisal,
+        filterAppraisals,
+        clearFilter
       }}
     >
       {props.children}

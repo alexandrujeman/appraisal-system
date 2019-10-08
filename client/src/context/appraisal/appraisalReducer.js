@@ -26,7 +26,7 @@ export default (state, action) => {
       return {
         ...state,
         appraisals: state.appraisals.filter(
-          appraisal => appraisal.id != action.payload
+          appraisal => appraisal.id !== action.payload
         )
       };
     case SET_CURRENT:
@@ -38,6 +38,19 @@ export default (state, action) => {
       return {
         ...state,
         current: null
+      };
+    case FILTER_APPRAISALS:
+      return {
+        ...state,
+        filtered: state.appraisals.filter(appraisal => {
+          const regex = new RegExp(`${action.payload}`, "gi");
+          return appraisal.name.match(regex) || appraisal.email.match(regex);
+        })
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null
       };
     default:
       return state;
