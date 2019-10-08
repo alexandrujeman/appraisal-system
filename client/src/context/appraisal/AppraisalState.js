@@ -66,7 +66,9 @@ const AppraisalState = props => {
         tlfeedback: "Ipsum quia dolor sit amet",
         type: "draft"
       }
-    ]
+    ],
+    current: null,
+    filtered: null
   };
 
   const [state, dispatch] = useReducer(appraisalReducer, initialState);
@@ -83,9 +85,15 @@ const AppraisalState = props => {
   };
 
   // Set current appraisal
+  const setCurrent = appraisal => {
+    dispatch({ type: SET_CURRENT, payload: appraisal });
+  };
 
   // Clear current appraisal
-
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
+  
   // Update appraisal
 
   // Filter appraisals
@@ -96,8 +104,11 @@ const AppraisalState = props => {
     <AppraisalContext.Provider
       value={{
         appraisals: state.appraisals,
+        current: state.current,
         addAppraisal,
-        deleteAppraisal
+        deleteAppraisal,
+        setCurrent,
+        clearCurrent
       }}
     >
       {props.children}

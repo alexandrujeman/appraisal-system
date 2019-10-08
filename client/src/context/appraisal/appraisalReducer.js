@@ -18,8 +18,20 @@ export default (state, action) => {
     case DELETE_APPRAISAL:
       return {
         ...state,
-        appraisals: state.appraisals.filter(appraisal => appraisal.id != action.payload)
-      }
+        appraisals: state.appraisals.filter(
+          appraisal => appraisal.id != action.payload
+        )
+      };
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: action.payload
+      };
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        current: null
+      };
     default:
       return state;
   }

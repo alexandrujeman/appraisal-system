@@ -5,7 +5,7 @@ import AppraisalContext from "../../context/appraisal/appraisalContext";
 const AppraisalItem = ({ appraisal }) => {
 
   const appraisalContext = useContext(AppraisalContext);
-  const {deleteAppraisal} = appraisalContext;
+  const {deleteAppraisal, setCurrent, clearCurrent } = appraisalContext;
 
   const {
     id,
@@ -27,6 +27,7 @@ const AppraisalItem = ({ appraisal }) => {
 
   const onDelete = () => {
     deleteAppraisal(id);
+    clearCurrent();
   } 
 
   return (
@@ -56,7 +57,7 @@ const AppraisalItem = ({ appraisal }) => {
         )}
       </ul>
       <p>
-        <button className="btn btn-dark btn-sm">Edit</button>
+        <button className="btn btn-dark btn-sm" onClick={() => setCurrent(appraisal)}>Edit</button>
         <button className="btn btn-danger btn-sm" onClick={onDelete}>Delete</button>
       </p>
     </div>
