@@ -5,23 +5,26 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 
 import AppraisalState from "./context/appraisal/AppraisalState";
+import AuthState from "./context/auth/authState";
 import "./App.css";
 
 function App() {
   return (
-    <AppraisalState>
-      <Router>
-        <Fragment>
-          <Navbar />
-          <div className="container">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/about" component={About} />
-            </Switch>
-          </div>
-        </Fragment>
-      </Router>
-    </AppraisalState>
+    <AuthState>
+      <AppraisalState>
+        <Router>
+          <Fragment>
+            <Navbar />
+            <div className="container">
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/about" component={About} />
+              </Switch>
+            </div>
+          </Fragment>
+        </Router>
+      </AppraisalState>
+    </AuthState>
   );
 }
 
