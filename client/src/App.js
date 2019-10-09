@@ -8,7 +8,7 @@ import Login from "./components/auth/Login";
 import Alerts from "./components/layout/Alerts";
 
 import AppraisalState from "./context/appraisal/AppraisalState";
-import AuthState from "./context/auth/authState";
+import AuthState from "./context/auth/AuthState";
 import AlertState from "./context/alert/AlertState";
 import "./App.css";
 
