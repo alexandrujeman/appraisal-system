@@ -8,7 +8,7 @@ const AppraisalItem = ({ appraisal }) => {
   const {deleteAppraisal, setCurrent, clearCurrent } = appraisalContext;
 
   const {
-    id,
+    _id,
     name,
     email,
     evalperiod,
@@ -16,7 +16,7 @@ const AppraisalItem = ({ appraisal }) => {
   } = appraisal;
 
   const onDelete = () => {
-    deleteAppraisal(id);
+    deleteAppraisal(_id);
     clearCurrent();
   } 
 

@@ -54,8 +54,14 @@ const AppraisalState = props => {
   };
 
   // Delete appraisal
-  const deleteAppraisal = id => {
-    dispatch({ type: DELETE_APPRAISAL, payload: id });
+  const deleteAppraisal = async id => {
+    try {
+      await axios.delete(`/api/appraisal/${id}`);
+
+      dispatch({ type: DELETE_APPRAISAL, payload: id });
+    } catch (err) {
+      dispatch({ type: APPRAISAL_ERROR, payload: err.response.msg });
+    }
   };
 
   // Clear contacts

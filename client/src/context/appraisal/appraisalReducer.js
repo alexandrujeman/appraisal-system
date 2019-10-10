@@ -22,7 +22,7 @@ export default (state, action) => {
     case ADD_APPRAISAL:
       return {
         ...state,
-        appraisals: [...state.appraisals, action.payload],
+        appraisals: [action.payload, ...state.appraisals],
         loading: false
       };
     case UPDATE_APPRAISAL:
@@ -37,7 +37,7 @@ export default (state, action) => {
       return {
         ...state,
         appraisals: state.appraisals.filter(
-          appraisal => appraisal.id !== action.payload
+          appraisal => appraisal._id !== action.payload
         ),
         loading: false
       };
@@ -48,7 +48,7 @@ export default (state, action) => {
         filtered: null,
         error: null,
         current: null
-      }
+      };
     case SET_CURRENT:
       return {
         ...state,
