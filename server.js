@@ -1,7 +1,6 @@
 const express = require("express");
 const connectDB = require("./config/db");
-
-const User = require("./models/User");
+const path = require("path");
 
 const app = express();
 
@@ -11,18 +10,23 @@ connectDB();
 // Init Middleware
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) => {
-  res.json({ msg: "Welcome to the API" });
-});
-
 // Define Routes
 app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/appraisal", require("./routes/appraisal"));
 
+// Serve static assets in production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+  );
+}
+
 // Node connection
 const hostname = "0.0.0.0";
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, hostname, () => {
   console.log(`Listening on ${hostname} 
