@@ -7,7 +7,8 @@ import {
   UPDATE_APPRAISAL,
   FILTER_APPRAISALS,
   CLEAR_FILTER,
-  APPRAISAL_ERROR
+  APPRAISAL_ERROR,
+  CLEAR_APPRAISALS
 } from "../types";
 
 export default (state, action) => {
@@ -40,6 +41,14 @@ export default (state, action) => {
         ),
         loading: false
       };
+    case CLEAR_APPRAISALS:
+      return {
+        ...state,
+        appraisals: null,
+        filtered: null,
+        error: null,
+        current: null
+      }
     case SET_CURRENT:
       return {
         ...state,

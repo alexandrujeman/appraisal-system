@@ -6,11 +6,11 @@ import {
   GET_APPRAISALS,
   ADD_APPRAISAL,
   DELETE_APPRAISAL,
+  CLEAR_APPRAISALS,
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_APPRAISAL,
   FILTER_APPRAISALS,
-  CLEAR_APPRAISALS,
   CLEAR_FILTER,
   APPRAISAL_ERROR
 } from "../types";
@@ -36,7 +36,6 @@ const AppraisalState = props => {
     }
   };
 
-
   // Add appraisal
   const addAppraisal = async appraisal => {
     const config = {
@@ -57,6 +56,11 @@ const AppraisalState = props => {
   // Delete appraisal
   const deleteAppraisal = id => {
     dispatch({ type: DELETE_APPRAISAL, payload: id });
+  };
+
+  // Clear contacts
+  const clearAppraisals = () => {
+    dispatch({ type: CLEAR_APPRAISALS });
   };
 
   // Set current appraisal
@@ -91,10 +95,10 @@ const AppraisalState = props => {
         current: state.current,
         filtered: state.filtered,
         error: state.error,
-        error: state.error,
         getAppraisals,
         addAppraisal,
         deleteAppraisal,
+        clearAppraisals,
         setCurrent,
         clearCurrent,
         updateAppraisal,

@@ -3,14 +3,18 @@ import logo from "../../logo-katoen-natie-white.svg";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/auth/authContext";
+import AppraisalContext from "../../context/appraisal/appraisalContext";
 
 const Navbar = ({ title }) => {
   const authContext = useContext(AuthContext);
+  const appraisalContext = useContext(AppraisalContext);
 
   const { isAuthenticated, logout, user } = authContext;
+  const { clearAppraisals } = appraisalContext;
 
   const onLogout = () => {
     logout();
+    clearAppraisals();
   };
 
   const authLinks = (
