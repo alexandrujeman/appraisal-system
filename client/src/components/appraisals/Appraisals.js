@@ -17,12 +17,12 @@ const Appraisals = () => {
       <TransitionGroup>
         {filtered !== null
           ? filtered.map(appraisal => (
-              <CSSTransition key={appraisal.id} timeout={500} classNames="item">
+              <CSSTransition key={appraisal._id} timeout={500} classNames="item">
                 <AppraisalItem key={appraisal.id} appraisal={appraisal} />
               </CSSTransition>
             ))
           : appraisals.map(appraisal => (
-              <CSSTransition key={appraisal.id} timeout={500} classNames="item">
+              <CSSTransition key={appraisal._id} timeout={500} classNames="item">
                 <AppraisalItem appraisal={appraisal} />
               </CSSTransition>
             ))}

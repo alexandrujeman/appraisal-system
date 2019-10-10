@@ -5,7 +5,8 @@ import {
   CLEAR_CURRENT,
   UPDATE_APPRAISAL,
   FILTER_APPRAISALS,
-  CLEAR_FILTER
+  CLEAR_FILTER,
+  APPRAISAL_ERROR
 } from "../types";
 
 export default (state, action) => {
@@ -51,6 +52,11 @@ export default (state, action) => {
       return {
         ...state,
         filtered: null
+      };
+    case APPRAISAL_ERROR:
+      return {
+        ...state,
+        error: action.payload
       };
     default:
       return state;

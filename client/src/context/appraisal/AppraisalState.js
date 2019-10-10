@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import uuid from "uuid";
+import axios from "axios";
 import AppraisalContext from "./appraisalContext";
 import appraisalReducer from "./appraisalReducer";
 import {
@@ -9,74 +9,35 @@ import {
   CLEAR_CURRENT,
   UPDATE_APPRAISAL,
   FILTER_APPRAISALS,
-  CLEAR_FILTER
+  CLEAR_FILTER,
+  APPRAISAL_ERROR
 } from "../types";
 
 const AppraisalState = props => {
   const initialState = {
-    appraisals: [
-      {
-        id: 1,
-        name: "Lorem Ipsum",
-        email: "loremipsum@gmail.com",
-        phone: "111-111-1111",
-        evalperiod: "Mid year 2019",
-        position: "Team Leader",
-        team: "Natus error",
-        teamleader: "Cicero",
-        achieved: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam",
-        goals: "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur",
-        wishlist: "Ipsum quia dolor sit amet",
-        swot: "S: W: O: T:",
-        feedback: "Ipsum quia dolor sit amet",
-        tlfeedback: "Ipsum quia dolor sit amet",
-        type: "submitted"
-      },
-      {
-        id: 2,
-        name: "Ipsum Dolor",
-        email: "ipsumdolor@gmail.com",
-        phone: "222-111-1111",
-        evalperiod: "Mid year 2019",
-        position: "Team Member",
-        team: "Natus error",
-        teamleader: "Cicero",
-        achieved: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam",
-        goals: "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur",
-        wishlist: "Ipsum quia dolor sit amets",
-        swot: "S: W: O: T:",
-        feedback: "Ipsum quia dolor sit amet",
-        tlfeedback: "Ipsum quia dolor sit amet",
-        type: "draft"
-      },
-      {
-        id: 3,
-        name: "Sit Amet",
-        email: "sitamet@gmail.com",
-        phone: "333-111-1111",
-        evalperiod: "Mid year 2019",
-        position: "New Member",
-        team: "Natus error",
-        teamleader: "Cicero",
-        achieved: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam",
-        goals: "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur",
-        wishlist: "Ipsum quia dolor sit amet",
-        swot: "S: W: O: T:",
-        feedback: "Ipsum quia dolor sit amet",
-        tlfeedback: "Ipsum quia dolor sit amet",
-        type: "draft"
-      }
-    ],
+    appraisals: [],
     current: null,
-    filtered: null
+    filtered: null,
+    error: null
   };
 
   const [state, dispatch] = useReducer(appraisalReducer, initialState);
 
   // Add appraisal
-  const addAppraisal = appraisal => {
-    appraisal.id = uuid.v4();
-    dispatch({ type: ADD_APPRAISAL, payload: appraisal });
+  const addAppraisal = async appraisal => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    try {
+      const res = await axios.post("/api/appraisal", appraisal, config);
+
+      dispatch({ type: ADD_APPRAISAL, payload: res.data });
+    } catch (err) {
+      dispatch({ type: APPRAISAL_ERROR, payload: err.response.msg });
+    }
   };
 
   // Delete appraisal
@@ -93,7 +54,7 @@ const AppraisalState = props => {
   const clearCurrent = () => {
     dispatch({ type: CLEAR_CURRENT });
   };
-  
+
   // Update appraisal
   const updateAppraisal = appraisal => {
     dispatch({ type: UPDATE_APPRAISAL, payload: appraisal });
@@ -115,6 +76,7 @@ const AppraisalState = props => {
         appraisals: state.appraisals,
         current: state.current,
         filtered: state.filtered,
+        error: state.error,
         addAppraisal,
         deleteAppraisal,
         setCurrent,
