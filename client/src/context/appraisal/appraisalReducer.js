@@ -1,4 +1,5 @@
 import {
+  GET_APPRAISALS,
   ADD_APPRAISAL,
   DELETE_APPRAISAL,
   SET_CURRENT,
@@ -11,24 +12,33 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
+    case GET_APPRAISALS:
+      return {
+        ...state,
+        appraisals: action.payload,
+        loading: false
+      };
     case ADD_APPRAISAL:
       return {
         ...state,
-        appraisals: [...state.appraisals, action.payload]
+        appraisals: [...state.appraisals, action.payload],
+        loading: false
       };
     case UPDATE_APPRAISAL:
       return {
         ...state,
         appraisals: state.appraisals.map(appraisal =>
           appraisal.id === action.payload.id ? action.payload : appraisal
-        )
+        ),
+        loading: false
       };
     case DELETE_APPRAISAL:
       return {
         ...state,
         appraisals: state.appraisals.filter(
           appraisal => appraisal.id !== action.payload
-        )
+        ),
+        loading: false
       };
     case SET_CURRENT:
       return {

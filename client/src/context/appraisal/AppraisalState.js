@@ -3,25 +3,39 @@ import axios from "axios";
 import AppraisalContext from "./appraisalContext";
 import appraisalReducer from "./appraisalReducer";
 import {
+  GET_APPRAISALS,
   ADD_APPRAISAL,
   DELETE_APPRAISAL,
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_APPRAISAL,
   FILTER_APPRAISALS,
+  CLEAR_APPRAISALS,
   CLEAR_FILTER,
   APPRAISAL_ERROR
 } from "../types";
 
 const AppraisalState = props => {
   const initialState = {
-    appraisals: [],
+    appraisals: null,
     current: null,
     filtered: null,
     error: null
   };
 
   const [state, dispatch] = useReducer(appraisalReducer, initialState);
+
+  // Get appraisals
+  const getAppraisals = async () => {
+    try {
+      const res = await axios.get("/api/appraisal");
+
+      dispatch({ type: GET_APPRAISALS, payload: res.data });
+    } catch (err) {
+      dispatch({ type: APPRAISAL_ERROR, payload: err.response.msg });
+    }
+  };
+
 
   // Add appraisal
   const addAppraisal = async appraisal => {
@@ -77,6 +91,8 @@ const AppraisalState = props => {
         current: state.current,
         filtered: state.filtered,
         error: state.error,
+        error: state.error,
+        getAppraisals,
         addAppraisal,
         deleteAppraisal,
         setCurrent,
