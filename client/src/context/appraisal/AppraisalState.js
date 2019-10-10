@@ -64,7 +64,29 @@ const AppraisalState = props => {
     }
   };
 
-  // Clear contacts
+    // Update appraisal
+    const updateAppraisal = async appraisal => {
+      const config = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+  
+      try {
+        const res = await axios.put(
+          `/api/appraisal/${appraisal._id}`,
+          appraisal,
+          config
+        );
+  
+        dispatch({ type: UPDATE_APPRAISAL, payload: res.data });
+      } catch (err) {
+        dispatch({ type: APPRAISAL_ERROR, payload: err.response.msg });
+      }
+    };
+  
+
+  // Clear appraisals
   const clearAppraisals = () => {
     dispatch({ type: CLEAR_APPRAISALS });
   };
@@ -77,11 +99,6 @@ const AppraisalState = props => {
   // Clear current appraisal
   const clearCurrent = () => {
     dispatch({ type: CLEAR_CURRENT });
-  };
-
-  // Update appraisal
-  const updateAppraisal = appraisal => {
-    dispatch({ type: UPDATE_APPRAISAL, payload: appraisal });
   };
 
   // Filter appraisals
