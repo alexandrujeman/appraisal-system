@@ -13,9 +13,6 @@ const AppraisalSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  phone: {
-    type: String
-  },
   evalperiod: {
     type: String,
     default: "annual"

@@ -7,10 +7,10 @@ import Spinner from "../layout/Spinner";
 const Appraisals = () => {
   const appraisalContext = useContext(AppraisalContext);
 
-  const { appraisals, filtered, getAppraisals, loading } = appraisalContext;
+  const { appraisals, filtered, getAllAppraisals, loading } = appraisalContext;
 
   useEffect(() => {
-    getAppraisals();
+    getAllAppraisals();
     // eslint-disable-next-line
   }, []);
 

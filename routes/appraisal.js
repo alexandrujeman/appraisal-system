@@ -42,7 +42,6 @@ router.post(
     const {
       name,
       email,
-      phone,
       evalperiod,
       position,
       team,
@@ -59,7 +58,6 @@ router.post(
       const newAppraisal = new Appraisal({
         name,
         email,
-        phone,
         evalperiod,
         position,
         team,
@@ -90,7 +88,6 @@ router.put("/:id", auth, async (req, res) => {
   const {
     name,
     email,
-    phone,
     evalperiod,
     position,
     team,
@@ -107,7 +104,6 @@ router.put("/:id", auth, async (req, res) => {
   const appraisalFields = {};
   if (name) appraisalFields.name = name;
   if (email) appraisalFields.email = email;
-  if (phone) appraisalFields.phone = phone;
   if (evalperiod) appraisalFields.evalperiod = evalperiod;
   if (position) appraisalFields.position = position;
   if (team) appraisalFields.team = team;

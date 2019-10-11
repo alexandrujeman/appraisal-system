@@ -1,16 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import AppraisalContext from "../../context/appraisal/appraisalContext";
-import AuthContext from "../../context/auth/authContext";
 
 const AppraisalForm = () => {
-  const authContext = useContext(AuthContext);
   const appraisalContext = useContext(AppraisalContext);
-
-  const { user } = authContext;
 
   const {
     addAppraisal,
-    updateAppraisal,
+    updateAppraisalAdmin,
     current,
     clearCurrent
   } = appraisalContext;
@@ -54,6 +50,8 @@ const AppraisalForm = () => {
   });
 
   const {
+    name,
+    email,
     evalperiod,
     position,
     team,
@@ -67,24 +65,15 @@ const AppraisalForm = () => {
     type
   } = appraisal;
 
-  const onChange = e => {
-    setAppraisal({
-      ...appraisal,
-      [e.target.name]: e.target.value,
-      // eslint-disable-next-line
-      ["name"]: String(user && user.name),
-      // eslint-disable-next-line
-      ["email"]: String(user && user.email)
-
-    });
-  };
+  const onChange = e =>
+    setAppraisal({ ...appraisal, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();
     if (current === null) {
       addAppraisal(appraisal);
     } else {
-      updateAppraisal(appraisal);
+      updateAppraisalAdmin(appraisal);
     }
     clearAll();
   };
@@ -95,9 +84,24 @@ const AppraisalForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <h2>{current ? "Edit Appraisal" : "Add Appraisal"}</h2>
-      <h4>Name</h4>
-      {user && user.name}
+      <h2>{current ? "Edit Feedback" : "View Appraisal"}</h2>
+      <h6>node: Admin role users can edit only Teamleader Feedback field</h6>
+      {/* Name */}
+      <input
+        type="text"
+        placeholder="Name"
+        name="name"
+        value={name}
+        readOnly
+      />
+      {/* Email */}
+      <input
+        type="email"
+        placeholder="Email"
+        name="email"
+        value={email}
+        readOnly
+      />
       <h4>Evaluation Period</h4>
       {/* Evaluation Period */}
       <input
@@ -105,7 +109,7 @@ const AppraisalForm = () => {
         placeholder=""
         name="evalperiod"
         value={evalperiod}
-        onChange={onChange}
+        readOnly
       />
       <h4>Your Position</h4>
       {/* Position */}
@@ -114,7 +118,7 @@ const AppraisalForm = () => {
         placeholder=""
         name="position"
         value={position}
-        onChange={onChange}
+        readOnly
       />
       <h4>Your Team</h4>
       {/* Team */}
@@ -123,7 +127,7 @@ const AppraisalForm = () => {
         placeholder=""
         name="team"
         value={team}
-        onChange={onChange}
+        readOnly
       />
       <h4>Who is your Team Leader?</h4>
       {/* Teamleader */}
@@ -132,7 +136,7 @@ const AppraisalForm = () => {
         placeholder=""
         name="teamleader"
         value={teamleader}
-        onChange={onChange}
+        readOnly
       />
       <h4>Objectives/tasks achieved</h4>
       {/* Achieved */}
@@ -140,18 +144,18 @@ const AppraisalForm = () => {
         placeholder=""
         name="achieved"
         value={achieved}
-        onChange={onChange}
+        readOnly
       />
       <h4>Objectives/tasks still to be accomplished</h4>
       {/* Goals */}
-      <textarea placeholder="" name="goals" value={goals} onChange={onChange} />
+      <textarea placeholder="" name="goals" value={goals} readOnly />
       <h4>Wish-list of Trainings/ Activities to accomplish</h4>
       {/* Wishlist */}
       <textarea
         placeholder=""
         name="wishlist"
         value={wishlist}
-        onChange={onChange}
+        readOnly
       />
       <h4>Individual SWOT analysis</h4>
       {/* Swot */}
@@ -159,7 +163,7 @@ const AppraisalForm = () => {
         placeholder="SWOT(strengths, weaknesses, opportunities, and threats)"
         name="swot"
         value={swot}
-        onChange={onChange}
+        readOnly
       />
       <h4>Feedback and proposals</h4>
       {/* Feedback */}
@@ -167,7 +171,7 @@ const AppraisalForm = () => {
         placeholder=""
         name="feedback"
         value={feedback}
-        onChange={onChange}
+        readOnly
       />
       <h4>Teamleader Feedback</h4>
       {/* Teamleader Feedback */}
@@ -195,11 +199,7 @@ const AppraisalForm = () => {
         onChange={onChange}
       />{" "}
       Submitted{" "}
-      <input
-        type="submit"
-        value={current ? "Update" : "Save new"}
-        className="btn btn-primary btn-block"
-      />
+      <input type="submit" value={current ? "Update" : "Save new"} className="btn btn-primary btn-block" />
       {current && (
         <div>
           <button className="btn btn-light btn-block" onClick={clearAll}>

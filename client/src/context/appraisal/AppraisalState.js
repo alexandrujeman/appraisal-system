@@ -36,6 +36,17 @@ const AppraisalState = props => {
     }
   };
 
+   // Get all appraisals for admin role
+   const getAllAppraisals = async () => {
+    try {
+      const res = await axios.get("/api/admin");
+
+      dispatch({ type: GET_APPRAISALS, payload: res.data });
+    } catch (err) {
+      dispatch({ type: APPRAISAL_ERROR, payload: err.response.msg });
+    }
+  };
+
   // Add appraisal
   const addAppraisal = async appraisal => {
     const config = {
@@ -84,8 +95,28 @@ const AppraisalState = props => {
         dispatch({ type: APPRAISAL_ERROR, payload: err.response.msg });
       }
     };
-  
 
+    // Update appraisal as admin
+    const updateAppraisalAdmin = async appraisal => {
+      const config = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+  
+      try {
+        const res = await axios.put(
+          `/api/admin/${appraisal._id}`,
+          appraisal,
+          config
+        );
+  
+        dispatch({ type: UPDATE_APPRAISAL, payload: res.data });
+      } catch (err) {
+        dispatch({ type: APPRAISAL_ERROR, payload: err.response.msg });
+      }
+    };
+  
   // Clear appraisals
   const clearAppraisals = () => {
     dispatch({ type: CLEAR_APPRAISALS });
@@ -119,12 +150,14 @@ const AppraisalState = props => {
         filtered: state.filtered,
         error: state.error,
         getAppraisals,
+        getAllAppraisals,
         addAppraisal,
         deleteAppraisal,
         clearAppraisals,
         setCurrent,
         clearCurrent,
         updateAppraisal,
+        updateAppraisalAdmin,
         filterAppraisals,
         clearFilter
       }}
