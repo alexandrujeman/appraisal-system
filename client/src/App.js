@@ -8,6 +8,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Alerts from "./components/layout/Alerts";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import AdminRoute from "./components/routing/AdminRoute";
 
 import AppraisalState from "./context/appraisal/AppraisalState";
 import AuthState from "./context/auth/AuthState";
@@ -34,7 +35,7 @@ function App() {
                   <Route exact path="/about" component={About} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
-                  <PrivateRoute exact path="/admin" component={Admin} />
+                  <AdminRoute exact path="/admin" component={Admin} />
                 </Switch>
               </div>
             </Fragment>
