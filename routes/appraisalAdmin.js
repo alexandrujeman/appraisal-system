@@ -121,14 +121,7 @@ router.put("/:id", auth, async (req, res) => {
     if (!appraisal) {
       return res.status(404).json({ msg: "Appraisal not found" });
     }
-    // Make sure user owns appraisal
-    // console.log(req.user.role);
-    // if (req.user.role !== "admin") {
-    //   return res
-    //     .status(401)
-    //     .json({ msg: "You are not authorized to edit this form" });
-    // }
-    console.log(req.role);
+
     appraisal = await Appraisal.findByIdAndUpdate(
       req.params.id,
       { $set: appraisalFields },

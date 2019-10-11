@@ -85,7 +85,7 @@ const AppraisalForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <h2>{current ? "Edit Feedback" : "View Appraisal"}</h2>
-      <h6>node: Admin role users can edit only Teamleader Feedback field</h6>
+      <h6>node: Admin role users can only edit <a href="#tlfeedback">Teamleader Feedback</a> field</h6>
       {/* Name */}
       <input
         type="text"
@@ -178,6 +178,7 @@ const AppraisalForm = () => {
       <textarea
         placeholder=""
         name="tlfeedback"
+        id="tlfeedback"
         value={tlfeedback}
         onChange={onChange}
       />
@@ -188,7 +189,7 @@ const AppraisalForm = () => {
         name="type"
         value="draft"
         checked={type === "draft"}
-        onChange={onChange}
+        readOnly
       />{" "}
       Draft{" "}
       <input
@@ -196,7 +197,7 @@ const AppraisalForm = () => {
         name="type"
         value="submitted"
         checked={type === "submitted"}
-        onChange={onChange}
+        readOnly
       />{" "}
       Submitted{" "}
       <input type="submit" value={current ? "Update" : "Save new"} className="btn btn-primary btn-block" />
