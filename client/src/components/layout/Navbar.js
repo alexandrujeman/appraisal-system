@@ -9,7 +9,7 @@ const Navbar = ({ title }) => {
   const authContext = useContext(AuthContext);
   const appraisalContext = useContext(AppraisalContext);
 
-  const { isAuthenticated, logout, user} = authContext;
+  const { isAuthenticated, logout, user } = authContext;
   const { clearAppraisals, clearCurrent } = appraisalContext;
 
   const clearAll = () => {
@@ -35,11 +35,13 @@ const Navbar = ({ title }) => {
 
   const adminLinks = (
     <Fragment>
-    <li>
-      <Link onClick={clearAll} to="/admin">Admin</Link>
-    </li>
+      <li>
+        <Link onClick={clearAll} to="/admin">
+          Admin
+        </Link>
+      </li>
     </Fragment>
-  )
+  );
 
   const guestLinks = (
     <Fragment>
@@ -54,13 +56,17 @@ const Navbar = ({ title }) => {
 
   return (
     <div className="navbar bg-primary">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h2>{title}</h2>
+      <div>
+        <img src={logo} className="App-logo" alt="logo" />
+        <span className="text-logo">{title}</span>
+      </div>
       <ul>
         <li>
-          <Link onClick={clearAll} to="/">Home</Link>
+          <Link onClick={clearAll} to="/">
+            Home
+          </Link>
         </li>
-        {(user && user.role === 'admin') ? adminLinks : ''}
+        {user && user.role === "admin" ? adminLinks : ""}
         <li>
           <Link to="/about">About</Link>
         </li>

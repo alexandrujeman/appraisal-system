@@ -85,23 +85,19 @@ const AppraisalForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <h2>{current ? "Edit Feedback" : "View Appraisal"}</h2>
-      <h6>node: Admin role users can only edit <a href="#tlfeedback">Teamleader Feedback</a> field</h6>
-      {/* Name */}
-      <input
-        type="text"
-        placeholder="Name"
-        name="name"
-        value={name}
-        readOnly
-      />
-      {/* Email */}
-      <input
-        type="email"
-        placeholder="Email"
-        name="email"
-        value={email}
-        readOnly
-      />
+      <h5>node: Admin role users can only edit <a href="#tlfeedback">Teamleader Feedback</a> field</h5>
+      {/*Bio*/}
+      <div className="grid-bio">
+      <div>
+      <h4>Name</h4>
+      <h4 className="text-primary">{name}</h4>
+      </div>
+      <div>
+      <h4>Email</h4>
+      <h4 className="text-primary">{email}</h4>
+      </div>
+      </div>
+
       <h4>Evaluation Period</h4>
       {/* Evaluation Period */}
       <input
@@ -160,7 +156,7 @@ const AppraisalForm = () => {
       <h4>Individual SWOT analysis</h4>
       {/* Swot */}
       <textarea
-        placeholder="SWOT(strengths, weaknesses, opportunities, and threats)"
+        placeholder=""
         name="swot"
         value={swot}
         readOnly
