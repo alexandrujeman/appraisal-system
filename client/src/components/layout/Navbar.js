@@ -58,7 +58,7 @@ const Navbar = ({ title }) => {
     <div className="navbar bg-primary">
       <div>
         <img src={logo} className="App-logo" alt="logo" />
-        <span className="text-logo">{title}</span>
+        <span className="text-logo hide-sm">{title}</span>
       </div>
       <ul>
         <li>

@@ -87,12 +87,12 @@ const AppraisalForm = () => {
       <h2>{current ? "Edit Feedback" : "View Appraisal"}</h2>
       <h5>node: Admin role users can only edit <a href="#tlfeedback">Teamleader Feedback</a> field</h5>
       {/*Bio*/}
-      <div className="grid-bio">
-      <div>
+      <div className="grid-bio flex-2-form">
+      <div className="flex-child-form-1">
       <h4>Name</h4>
       <h4 className="text-primary">{name}</h4>
       </div>
-      <div>
+      <div className="flex-child-form-2">
       <h4>Email</h4>
       <h4 className="text-primary">{email}</h4>
       </div>

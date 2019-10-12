@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "react": "^16.10.2",
+    "react-app-polyfill": "^1.0.4",
     "react-dom": "^16.10.2",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
@@ -24,12 +25,14 @@
     "production": [
       ">0.2%",
       "not dead",
+      "ie >= 9",
       "not op_mini all"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "last 1 ie version"
     ]
   },
   "proxy": "http://127.0.0.1:5000"

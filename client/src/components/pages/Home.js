@@ -13,11 +13,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="grid-2">
-      <div>
+    <div className="grid-2 flex-2">
+      <div className="flex-child-1">
         <AppraisalForm />
       </div>
-      <div>
+      <div className="flex-child-2">
         <AppraisalFilter />
         <Appraisals />
       </div>

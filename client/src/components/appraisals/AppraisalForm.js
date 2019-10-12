@@ -96,12 +96,12 @@ const AppraisalForm = () => {
     <form onSubmit={onSubmit}>
       <h2>{current ? "Edit Appraisal" : "Add Appraisal"}</h2>
       {/*Bio*/}
-      <div className="grid-bio">
-      <div>
+      <div className="grid-bio flex-2-form">
+      <div className="flex-child-form-1">
       <h4>Name</h4>
       <h4 className="text-primary">{user && user.name}</h4>
       </div>
-      <div>
+      <div className="flex-child-form-2">
       <h4>Email</h4>
       <h4 className="text-primary">{user && user.email}</h4>
       </div>
