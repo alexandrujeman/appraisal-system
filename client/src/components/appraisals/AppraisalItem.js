@@ -48,7 +48,7 @@ const AppraisalItem = ({ appraisal }) => {
       </ul>
       <p>
         <button className="btn btn-dark btn-sm" onClick={() => setCurrent(appraisal)}>Edit</button>
-        <button className="btn btn-danger btn-sm" onClick={onDelete}>Delete</button>
+        <button className="btn btn-primary btn-sm" onClick={onDelete}>Delete</button>
       </p>
     </div>
   );

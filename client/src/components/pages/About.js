@@ -5,10 +5,14 @@ const About = () => {
     <div>
       <h1>About this app</h1>
       <p className="my-1">
-        This is a full stack React app for Appraisal Forms
+        This is a full stack React single-page app for Employee Appraisals
       </p>
       <p className="p">
         <strong>Version: </strong> 1.0.0
+        
+      </p>
+      <p className="p">
+      Development by Alexandru Jeman
       </p>
     </div>
   );
