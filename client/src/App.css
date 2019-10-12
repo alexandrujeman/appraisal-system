@@ -16,7 +16,7 @@
 }
 
 #root {
-  padding-top: 100px;
+  padding-top: 6rem;
 }
 
 body {
@@ -27,11 +27,6 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: #333;
-}
-
-.App-logo {
-  height: 55px;
-  width: auto;
 }
 
 a {
@@ -57,10 +52,11 @@ img {
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
+  padding-top: 1rem;
   background-color: #ffffff;
   border-radius: 3px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
 }
 
@@ -278,6 +274,7 @@ img {
   font-size: 0.8rem;
   padding: 0.3rem 1rem;
   margin-right: 0.2rem;
+  border-radius: 2px;
 }
 
 .badge {
@@ -287,7 +284,7 @@ img {
   margin: 0.3rem;
   background: var(--light-color);
   color: #333;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 .alert {
@@ -397,6 +394,7 @@ textarea {
 textarea {
   height: 120px;
   resize: vertical;
+  overflow: auto;
 }
 
 input[type='submit'],
@@ -464,14 +462,23 @@ table th {
   opacity: 0.9;
   margin-bottom: 1rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-  transform: translatey(-100px);
+  transform: translateY(-6rem);
+  height: 5rem;
+}
+
+.app-logo {
+  position: absolute;
+  height: 70px;
+  width: auto;
+  padding: 0 1rem;
+  margin-top: -2.2rem;
 }
 
 .text-logo {
-  padding: 0 1.5rem;
-    position: absolute;
-    font-size: 30px;
-    margin-top: 0.5rem;
+  position: absolute;
+  padding: 0 10rem;
+  font-size: 30px;
+  margin-top: -1.55rem;
 }
 
 .navbar ul {
@@ -492,6 +499,17 @@ table th {
   margin-right: 0.6rem;
 }
 
+/* Tablet Styles */
+@media (max-width: 950px) {
+  .hide-md {
+    display: none;
+  }
+   
+  .flex-2 {
+    display: initial;
+  }
+}
+
 /* Mobile Styles */
 @media (max-width: 700px) {
   .hide-sm {
@@ -505,7 +523,7 @@ table th {
   }
 
   #root {
-    padding-top: 120px;
+    padding-top: 6rem;
   }
 
   /* Text Styles */
@@ -523,9 +541,8 @@ table th {
 
   /* Navbar */
   .navbar {
-    display: block;
     text-align: center;
-    transform: translatey(-120px);
+    transform: translatey(-6rem);
   }
 
   .navbar h1 {

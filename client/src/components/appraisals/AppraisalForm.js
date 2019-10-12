@@ -109,7 +109,7 @@ const AppraisalForm = () => {
       {/* Evaluation Period */}
       <h4>Evaluation Period</h4>
       <select name="evalperiod" onChange={onChange} value={evalperiod}>
-        <option value="Please Select" selected>
+        <option value="Please Select" defaultValue>
           Please Select
         </option>
         <option value="End-year appraisal – 2019">
@@ -143,7 +143,7 @@ const AppraisalForm = () => {
       {/* Position */}
       <h4>Your Position</h4>
       <select name="position" onChange={onChange} value={position}>
-        <option value="Please Select" selected>Please Select</option>
+        <option value="Please Select" defaultValue>Please Select</option>
         <option value="Starter">Starter</option>
         <option value="Data Processor">Data Processor</option>
         <option value="Customer Expert">Customer Expert</option>
@@ -153,7 +153,7 @@ const AppraisalForm = () => {
       {/* Team */}
       <h4>Your Team</h4>
       <select name="team" onChange={onChange} value={team}>
-        <option value="Please Select" selected>Please Select</option>
+        <option value="Please Select" defaultValue>Please Select</option>
         <option value="CHEVRON">CHEVRON</option>
         <option value="DOW">DOW</option>
         <option value="EXXON">EXXON</option>
@@ -169,7 +169,7 @@ const AppraisalForm = () => {
       {/* Teamleader */}
       <h4>Who is your Team Leader?</h4>
       <select name="teamleader" onChange={onChange} value={teamleader}>
-        <option value="Please Select" selected>Please Select</option>
+        <option value="Please Select" defaultValue>Please Select</option>
         <option value="Bondarenco Denis">Bondarenco Denis</option>
         <option value="Foiu Cristina">Foiu Cristina</option>
         <option value="Gitu Alina">Gitu Alina</option>
