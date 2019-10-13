@@ -231,7 +231,7 @@ const AppraisalForm = () => {
         placeholder=""
         name="tlfeedback"
         value={tlfeedback}
-        onChange={onChange}
+        readOnly
       />
       {/* Status */}
       <h5>Status</h5>

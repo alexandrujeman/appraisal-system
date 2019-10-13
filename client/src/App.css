@@ -278,12 +278,12 @@ img {
 }
 
 .badge {
-  font-size: 0.8rem;
-  padding: 0.2rem 0.7rem;
+  font-size: 0.7rem;
   text-align: center;
   margin: 0.3rem;
   background: var(--light-color);
   color: #333;
+  padding: 2px 8px;
   border-radius: 4px;
 }
 
