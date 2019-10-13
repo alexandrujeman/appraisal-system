@@ -76,6 +76,7 @@ router.post(
       res.json(appraisal);
     } catch (error) {
       console.error(err.message);
+      console.log(error);
       res.status(500).send("Server error");
     }
   }
