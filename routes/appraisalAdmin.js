@@ -48,7 +48,10 @@ router.post(
       achieved,
       goals,
       wishlist,
-      swot,
+      swot1,
+      swot2,
+      swot3,
+      swot4,
       feedback,
       tlfeedback,
       type
@@ -64,7 +67,10 @@ router.post(
         achieved,
         goals,
         wishlist,
-        swot,
+        swot1,
+        swot2,
+        swot3,
+        swot4,
         feedback,
         tlfeedback,
         type,
@@ -94,7 +100,10 @@ router.put("/:id", auth, async (req, res) => {
     achieved,
     goals,
     wishlist,
-    swot,
+    swot1,
+    swot2,
+    swot3,
+    swot4,
     feedback,
     tlfeedback,
     type
@@ -110,7 +119,10 @@ router.put("/:id", auth, async (req, res) => {
   if (achieved) appraisalFields.achieved = achieved;
   if (goals) appraisalFields.goals = goals;
   if (wishlist) appraisalFields.wishlist = wishlist;
-  if (swot) appraisalFields.swot = swot;
+  if (swot1) appraisalFields.swot1 = swot1;
+  if (swot2) appraisalFields.swot2 = swot2;
+  if (swot3) appraisalFields.swot3 = swot3;
+  if (swot4) appraisalFields.swot4 = swot4;
   if (feedback) appraisalFields.feedback = feedback;
   if (tlfeedback) appraisalFields.tlfeedback = tlfeedback;
   if (type) appraisalFields.type = type;

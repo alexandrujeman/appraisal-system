@@ -38,7 +38,16 @@ const AppraisalSchema = mongoose.Schema({
   wishlist: {
     type: String
   },
-  swot: {
+  swot1: {
+    type: String
+  },
+  swot2: {
+    type: String
+  },
+  swot3: {
+    type: String
+  },
+  swot4: {
     type: String
   },
   feedback: {
