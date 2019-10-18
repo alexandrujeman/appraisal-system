@@ -195,6 +195,7 @@ img {
 }
 
 .flex-2-form {
+  display: flex;
   display: -webkit-box;
   display: -ms-flexbox;
   -webkit-box-orient: horizontal;

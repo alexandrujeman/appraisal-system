@@ -25,7 +25,10 @@ const AppraisalForm = () => {
         achieved: "",
         goals: "",
         wishlist: "",
-        swot: "",
+        swot1: "",
+        swot2: "",
+        swot3: "",
+        swot4: "",
         feedback: "",
         tlfeedback: "",
         type: "draft"
@@ -43,7 +46,10 @@ const AppraisalForm = () => {
     achieved: "",
     goals: "",
     wishlist: "",
-    swot: "",
+    swot1: "",
+    swot2: "",
+    swot3: "",
+    swot4: "",
     feedback: "",
     tlfeedback: "",
     type: "draft"
@@ -59,7 +65,10 @@ const AppraisalForm = () => {
     achieved,
     goals,
     wishlist,
-    swot,
+    swot1,
+    swot2,
+    swot3,
+    swot4,
     feedback,
     tlfeedback,
     type
@@ -85,19 +94,21 @@ const AppraisalForm = () => {
   return (
     <form onSubmit={onSubmit}>
       <h2>{current ? "Edit Feedback" : "View Appraisal"}</h2>
-      <h5>node: Admin role users can only edit <a href="#tlfeedback">Teamleader Feedback</a> field</h5>
+      <h5>
+        node: Admin role users can only edit{" "}
+        <a href="#tlfeedback">Teamleader Feedback</a> field
+      </h5>
       {/*Bio*/}
       <div className="grid-bio flex-2-form">
-      <div className="flex-child-form-1">
-      <h4>Name</h4>
-      <h4 className="text-primary">{name}</h4>
+        <div className="flex-child-form-1">
+          <h4>Name</h4>
+          <h4 className="text-primary">{name}</h4>
+        </div>
+        <div className="flex-child-form-2">
+          <h4>Email</h4>
+          <h4 className="text-primary">{email}</h4>
+        </div>
       </div>
-      <div className="flex-child-form-2">
-      <h4>Email</h4>
-      <h4 className="text-primary">{email}</h4>
-      </div>
-      </div>
-
       <h4>Evaluation Period</h4>
       {/* Evaluation Period */}
       <input
@@ -118,13 +129,7 @@ const AppraisalForm = () => {
       />
       <h4>Your Team</h4>
       {/* Team */}
-      <input
-        type="text"
-        placeholder=""
-        name="team"
-        value={team}
-        readOnly
-      />
+      <input type="text" placeholder="" name="team" value={team} readOnly />
       <h4>Who is your Team Leader?</h4>
       {/* Teamleader */}
       <input
@@ -136,39 +141,41 @@ const AppraisalForm = () => {
       />
       <h4>Objectives/tasks achieved</h4>
       {/* Achieved */}
-      <textarea
-        placeholder=""
-        name="achieved"
-        value={achieved}
-        readOnly
-      />
+      <textarea placeholder="" name="achieved" value={achieved} readOnly />
       <h4>Objectives/tasks still to be accomplished</h4>
       {/* Goals */}
       <textarea placeholder="" name="goals" value={goals} readOnly />
       <h4>Wish-list of Trainings/ Activities to accomplish</h4>
       {/* Wishlist */}
-      <textarea
-        placeholder=""
-        name="wishlist"
-        value={wishlist}
-        readOnly
-      />
-      <h4>Individual SWOT analysis</h4>
-      {/* Swot */}
-      <textarea
-        placeholder=""
-        name="swot"
-        value={swot}
-        readOnly
-      />
+      <textarea placeholder="" name="wishlist" value={wishlist} readOnly />
+      <h4>Individual SWOT analysis:</h4>
+      <div className="flex-2-form">
+        {/* Swot 1*/}
+        <div className="flex-child-form-1">
+          <h5>What are your Strengths?</h5>
+          <textarea placeholder="" name="swot1" value={swot1} readOnly />
+        </div>
+        <div className="flex-child-form-2">
+          {/* Swot 2*/}
+          <h5>What are your Weaknesses?</h5>
+          <textarea placeholder="" name="swot2" value={swot2} readOnly />
+        </div>
+      </div>
+      <div className="flex-2-form">
+        {/* Swot 3*/}
+        <div className="flex-child-form-1">
+          <h5>What are your Opportunities/ Wishes?</h5>
+          <textarea placeholder="" name="swot3" value={swot3} readOnly />
+        </div>
+        <div className="flex-child-form-2">
+          {/* Swot 4*/}
+          <h5>What are your Threats / worries?</h5>
+          <textarea placeholder="" name="swot4" value={swot4} readOnly />
+        </div>
+      </div>
       <h4>Feedback and proposals</h4>
       {/* Feedback */}
-      <textarea
-        placeholder=""
-        name="feedback"
-        value={feedback}
-        readOnly
-      />
+      <textarea placeholder="" name="feedback" value={feedback} readOnly />
       <h4>Teamleader Feedback</h4>
       {/* Teamleader Feedback */}
       <textarea
@@ -196,7 +203,11 @@ const AppraisalForm = () => {
         readOnly
       />{" "}
       Submitted{" "}
-      <input type="submit" value={current ? "Update" : "Save new"} className="btn btn-primary btn-block" />
+      <input
+        type="submit"
+        value={current ? "Update" : "Save new"}
+        className="btn btn-primary btn-block"
+      />
       {current && (
         <div>
           <button className="btn btn-light btn-block" onClick={clearAll}>

@@ -15,6 +15,8 @@ const AppraisalItem = ({ appraisal }) => {
     type
   } = appraisal;
 
+  
+
   const onDelete = () => {
     deleteAppraisal(_id);
     clearCurrent();

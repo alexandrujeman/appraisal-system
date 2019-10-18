@@ -124,6 +124,7 @@ const AppraisalState = props => {
 
   // Set current appraisal
   const setCurrent = appraisal => {
+    dispatch({ type: CLEAR_CURRENT });
     dispatch({ type: SET_CURRENT, payload: appraisal });
   };
 

@@ -29,7 +29,10 @@ const AppraisalForm = () => {
         achieved: "",
         goals: "",
         wishlist: "",
-        swot: "",
+        swot1: "",
+        swot2: "",
+        swot3: "",
+        swot4: "",
         feedback: "",
         tlfeedback: "",
         type: "draft"
@@ -47,7 +50,10 @@ const AppraisalForm = () => {
     achieved: "",
     goals: "",
     wishlist: "",
-    swot: "",
+    swot1: "",
+    swot2: "",
+    swot3: "",
+    swot4: "",
     feedback: "",
     tlfeedback: "",
     type: "draft"
@@ -61,7 +67,10 @@ const AppraisalForm = () => {
     achieved,
     goals,
     wishlist,
-    swot,
+    swot1,
+    swot2,
+    swot3,
+    swot4,
     feedback,
     tlfeedback,
     type
@@ -97,14 +106,14 @@ const AppraisalForm = () => {
       <h2>{current ? "Edit Appraisal" : "Add Appraisal"}</h2>
       {/*Bio*/}
       <div className="grid-bio flex-2-form">
-      <div className="flex-child-form-1">
-      <h4>Name</h4>
-      <h4 className="text-primary">{user && user.name}</h4>
-      </div>
-      <div className="flex-child-form-2">
-      <h4>Email</h4>
-      <h4 className="text-primary">{user && user.email}</h4>
-      </div>
+        <div className="flex-child-form-1">
+          <h4>Name</h4>
+          <h4 className="text-primary">{user && user.name}</h4>
+        </div>
+        <div className="flex-child-form-2">
+          <h4>Email</h4>
+          <h4 className="text-primary">{user && user.email}</h4>
+        </div>
       </div>
       {/* Evaluation Period */}
       <h4>Evaluation Period</h4>
@@ -143,7 +152,9 @@ const AppraisalForm = () => {
       {/* Position */}
       <h4>Your Position</h4>
       <select name="position" onChange={onChange} value={position}>
-        <option value="Please Select" defaultValue>Please Select</option>
+        <option value="Please Select" defaultValue>
+          Please Select
+        </option>
         <option value="Starter">Starter</option>
         <option value="Data Processor">Data Processor</option>
         <option value="Customer Expert">Customer Expert</option>
@@ -153,7 +164,9 @@ const AppraisalForm = () => {
       {/* Team */}
       <h4>Your Team</h4>
       <select name="team" onChange={onChange} value={team}>
-        <option value="Please Select" defaultValue>Please Select</option>
+        <option value="Please Select" defaultValue>
+          Please Select
+        </option>
         <option value="CHEVRON">CHEVRON</option>
         <option value="DOW">DOW</option>
         <option value="EXXON">EXXON</option>
@@ -169,7 +182,9 @@ const AppraisalForm = () => {
       {/* Teamleader */}
       <h4>Who is your Team Leader?</h4>
       <select name="teamleader" onChange={onChange} value={teamleader}>
-        <option value="Please Select" defaultValue>Please Select</option>
+        <option value="Please Select" defaultValue>
+          Please Select
+        </option>
         <option value="Bondarenco Denis">Bondarenco Denis</option>
         <option value="Foiu Cristina">Foiu Cristina</option>
         <option value="Gitu Alina">Gitu Alina</option>
@@ -209,14 +224,51 @@ const AppraisalForm = () => {
         value={wishlist}
         onChange={onChange}
       />
-      <h4>Individual SWOT analysis</h4>
-      {/* Swot */}
-      <textarea
-        placeholder="SWOT(strengths, weaknesses, opportunities, and threats)"
-        name="swot"
-        value={swot}
-        onChange={onChange}
-      />
+      <h4>Individual SWOT analysis:</h4>
+      <div className="flex-2-form">
+        {/* Swot 1*/}
+        <div className="flex-child-form-1">
+          <h5>What are your Strengths?</h5>
+          <textarea
+            placeholder=""
+            name="swot1"
+            value={swot1}
+            onChange={onChange}
+          />
+        </div>
+        <div className="flex-child-form-2">
+          {/* Swot 2*/}
+          <h5>What are your Weaknesses?</h5>
+          <textarea
+            placeholder=""
+            name="swot2"
+            value={swot2}
+            onChange={onChange}
+          />
+        </div>
+      </div>
+      <div className="flex-2-form">
+        {/* Swot 3*/}
+        <div className="flex-child-form-1">
+          <h5>What are your Opportunities/ Wishes?</h5>
+          <textarea
+            placeholder=""
+            name="swot3"
+            value={swot3}
+            onChange={onChange}
+          />
+        </div>
+        <div className="flex-child-form-2">
+          {/* Swot 4*/}
+          <h5>What are your Threats / worries?</h5>
+          <textarea
+            placeholder=""
+            name="swot4"
+            value={swot4}
+            onChange={onChange}
+          />
+        </div>
+      </div>
       <h4>Feedback and proposals</h4>
       {/* Feedback */}
       <textarea
@@ -227,12 +279,7 @@ const AppraisalForm = () => {
       />
       <h4>Teamleader Feedback</h4>
       {/* Teamleader Feedback */}
-      <textarea
-        placeholder=""
-        name="tlfeedback"
-        value={tlfeedback}
-        readOnly
-      />
+      <textarea placeholder="" name="tlfeedback" value={tlfeedback} readOnly />
       {/* Status */}
       <h5>Status</h5>
       <input
