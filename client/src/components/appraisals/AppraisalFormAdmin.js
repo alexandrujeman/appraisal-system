@@ -205,7 +205,7 @@ const AppraisalForm = () => {
       Submitted{" "}
       <input
         type="submit"
-        value={current ? "Update" : "Save new"}
+        value="Update"
         className="btn btn-primary btn-block"
       />
       {current && (
