@@ -39,7 +39,6 @@ router.post(
     const { email, password } = req.body;
     try {
       let user = await User.findOne({ email });
-
       if (!user) {
         return res.status(400).json({ msg: "Invalid email" });
       }
@@ -52,8 +51,9 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id
-        }
+          id: user.id,
+          team: user.team
+        }   
       };
 
       jwt.sign(

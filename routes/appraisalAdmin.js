@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const { check, validationResult } = require("express-validator");
 
+const User = require("../models/User");
 const Appraisal = require("../models/Appraisal");
 
 // route  GET api/appraisals
@@ -10,7 +11,7 @@ const Appraisal = require("../models/Appraisal");
 // access Private
 router.get("/", auth, async (req, res) => {
   try {
-    const appraisals = await Appraisal.find().sort({
+    const appraisals = await Appraisal.find({  team: req.user.team  }).sort({
       date: -1
     });
     res.json(appraisals);
