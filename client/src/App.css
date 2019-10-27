@@ -258,6 +258,7 @@ img {
   margin-right: 0.5rem;
   transition: opacity 0.2s ease-in;
   outline: none;
+  border-radius: 3px;
 }
 
 .btn-link {
@@ -334,6 +335,7 @@ img {
 .alert-success {
   background: var(--success-color);
   color: #fff;
+  margin-bottom: 1rem;
 }
 
 .btn-white,
