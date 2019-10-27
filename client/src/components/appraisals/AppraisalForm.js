@@ -72,8 +72,7 @@ const AppraisalForm = () => {
     swot3,
     swot4,
     feedback,
-    tlfeedback,
-    type
+    tlfeedback
   } = appraisal;
 
   const onChange = e => {
@@ -281,28 +280,16 @@ const AppraisalForm = () => {
       {/* Teamleader Feedback */}
       <textarea placeholder="" name="tlfeedback" value={tlfeedback} readOnly />
       {/* Status */}
-      <h5>Status</h5>
-      <input
-        type="radio"
-        name="type"
-        value="draft"
-        checked={type === "draft"}
-        onChange={onChange}
-      />{" "}
-      Draft{" "}
-      <input
-        type="radio"
-        name="type"
-        value="submitted"
-        checked={type === "submitted"}
-        onChange={onChange}
-      />{" "}
-      Submitted{" "}
+      <h4>Submit now or save and edit later?</h4>
       <input
         type="submit"
-        value={current ? "Update" : "Save new"}
+        value={current ? "Update" : "Save Draft"}
         className="btn btn-primary btn-block"
       />
+      <div>
+        <button className="btn btn-success btn-block" name="type" value="submitted" onClick={onChange}>Submit Now</button>
+      </div>
+      {""}
       {current && (
         <div>
           <button className="btn btn-light btn-block" onClick={clearAll}>
