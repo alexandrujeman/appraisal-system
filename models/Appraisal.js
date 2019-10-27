@@ -23,6 +23,7 @@ const AppraisalSchema = mongoose.Schema({
   },
   team: {
     type: String,
+    ref: "users",
     required: true
   },
   teamleader: {

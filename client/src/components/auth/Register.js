@@ -23,24 +23,26 @@ const Register = props => {
 
   const [user, setUser] = useState({
     name: "",
+    team: "",
     email: "",
     password: "",
     password2: ""
   });
 
-  const { name, email, password, password2 } = user;
+  const { name, team, email, password, password2 } = user;
 
   const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();
-    if (name === "" || email === "" || password === "") {
+    if (name === "" || team === "" || email === "" || password === "") {
       setAlert("Please enter all fields", "danger");
     } else if (password !== password2) {
       setAlert("Passwords do not match", "danger");
     } else {
       register({
         name,
+        team,
         email,
         password
       });
@@ -94,6 +96,25 @@ const Register = props => {
             required
             minLength="6"
           />
+        </div>
+        <div className="form-group">
+        <label htmlFor="team">Team</label>
+        <select name="team" onChange={onChange} value={team}>
+          <option value="Please Select" defaultValue>
+            Please Select Your Team
+          </option>
+          <option value="CHEVRON">CHEVRON</option>
+          <option value="DOW">DOW</option>
+          <option value="EXXON">EXXON</option>
+          <option value="Help Desk">Help Desk</option>
+          <option value="Ineos/Borealis">Ineos/Borealis</option>
+          <option value="SABIC">SABIC</option>
+          <option value="SINGAPORE">SINGAPORE</option>
+          <option value="US Sub-Team 1">US Sub-Team 1</option>
+          <option value="US Sub-Team 2">US Sub-Team 2</option>
+          <option value="US Sub-Team 2">US Sub-Team 2</option>
+          <option value="WVN136">WVN136</option>
+        </select>
         </div>
         <input
           type="submit"
